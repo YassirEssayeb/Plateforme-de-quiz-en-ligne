@@ -1,0 +1,62 @@
+[
+  {
+    "question": "Quelle est la capitale de la France ?",
+    "choices": ["Paris", "Lyon", "Marseille", "Nice"],
+    "correct": 0
+  },
+  {
+    "question": "Combien de continents y a-t-il sur Terre ?",
+    "choices": ["5", "6", "7", "8"],
+    "correct": 2
+  },
+  {
+    "question": "Quel est le plus grand océan du monde ?",
+    "choices": ["Atlantique", "Indien", "Arctique", "Pacifique"],
+    "correct": 3
+  },
+  {
+    "question": "En quelle année a eu lieu la Révolution française ?",
+    "choices": ["1776", "1789", "1799", "1804"],
+    "correct": 1
+  },
+  {
+    "question": "Quel élément chimique est représenté par le symbole 'O' ?",
+    "choices": ["Or", "Oxygène", "Osmium", "Oganesson"],
+    "correct": 1
+  },
+  {
+    "question": "Qui a écrit 'Les Misérables' ?",
+    "choices": ["Émile Zola", "Victor Hugo", "Gustave Flaubert", "Molière"],
+    "correct": 1
+  },
+  {
+    "question": "Quel est le plus long fleuve du monde ?",
+    "choices": ["Amazon", "Nil", "Mississippi", "Yangtsé"],
+    "correct": 1
+  },
+  {
+    "question": "Combien de jours compte une année bissextile ?",
+    "choices": ["364", "365", "366", "367"],
+    "correct": 2
+  },
+  {
+    "question": "Quel pays a la plus grande superficie ?",
+    "choices": ["États-Unis", "Chine", "Canada", "Russie"],
+    "correct": 3
+  },
+  {
+    "question": "Quel est le langage de programmation le plus ancien parmi ces choix ?",
+    "choices": ["Python", "JavaScript", "Fortran", "C++"],
+    "correct": 2
+  },
+  {
+    "question": "Combien de joueurs composent une équipe de football ?",
+    "choices": ["9", "10", "11", "12"],
+    "correct": 2
+  },
+  {
+    "question": "Quel est le symbole chimique de l'eau ?",
+    "choices": ["H2O", "CO2", "NaCl", "O2"],
+    "correct": 0
+  }
+]

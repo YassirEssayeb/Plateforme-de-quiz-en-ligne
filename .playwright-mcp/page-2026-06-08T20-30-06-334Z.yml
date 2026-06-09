@@ -1,0 +1,16 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - heading "Quiz en Ligne" [level=1] [ref=e4]
+    - navigation [ref=e5]:
+      - button "Quiz" [ref=e6] [cursor=pointer]
+      - button "Classement" [active] [ref=e7] [cursor=pointer]
+      - button "Créer" [ref=e8] [cursor=pointer]
+  - main [ref=e9]:
+    - generic [ref=e15]:
+      - heading "Classement" [level=2] [ref=e16]
+      - generic [ref=e18]:
+        - generic [ref=e19]: "#1"
+        - generic [ref=e20]: TestUser
+        - generic [ref=e21]: 12/12 (100%)
+        - generic [ref=e22]: 08/06/2026
+      - button "Effacer le classement" [ref=e23] [cursor=pointer]

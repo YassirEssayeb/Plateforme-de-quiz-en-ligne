@@ -1,0 +1,3 @@
+MCP write tool test - successful!
+Timestamp: 2026-06-08
+Message: Hello from opencode MCP write tool.

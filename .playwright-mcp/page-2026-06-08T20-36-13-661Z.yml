@@ -1,0 +1,29 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - heading "Quiz en Ligne" [level=1] [ref=e4]
+    - navigation [ref=e5]:
+      - button "Quiz" [ref=e6] [cursor=pointer]
+      - button "Classement" [ref=e7] [cursor=pointer]
+      - button "Créer" [ref=e8] [cursor=pointer]
+  - main [ref=e9]:
+    - generic [ref=e15]:
+      - generic [ref=e16]:
+        - generic [ref=e17]: Question 1/12
+        - generic [ref=e18]: "25"
+        - generic [ref=e19]: "Score: 1"
+      - generic [ref=e20]:
+        - paragraph [ref=e21]: Quelle est la capitale de la France ?
+        - generic [ref=e22]:
+          - button "A Paris" [disabled] [ref=e23]:
+            - generic [ref=e24]: A
+            - text: Paris
+          - button "B Lyon" [disabled] [ref=e25]:
+            - generic [ref=e26]: B
+            - text: Lyon
+          - button "C Marseille" [disabled] [ref=e27]:
+            - generic [ref=e28]: C
+            - text: Marseille
+          - button "D Nice" [disabled] [ref=e29]:
+            - generic [ref=e30]: D
+            - text: Nice
+      - button "Suivant" [ref=e31] [cursor=pointer]

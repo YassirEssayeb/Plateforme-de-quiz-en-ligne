@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz en Ligne</title>
+  <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Quiz en Ligne</h1>
+      <nav>
+        <button class="nav-btn active" data-view="quiz" id="navQuiz">Quiz</button>
+        <button class="nav-btn" data-view="leaderboard" id="navLeaderboard">Classement</button>
+        <button class="nav-btn" data-view="creator" id="navCreator">Créer</button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="viewQuiz" class="view active">
+        <div id="quizStart" class="quiz-start">
+          <h2>Prêt à commencer ?</h2>
+          <p>Répondez aux questions avant la fin du temps imparti.</p>
+          <button id="btnStart" class="btn-primary">Démarrer le Quiz</button>
+        </div>
+
+        <div id="quizActive" class="quiz-active hidden">
+          <div class="quiz-header">
+            <div class="progress">Question <span id="currentQ">1</span>/<span id="totalQ">0</span></div>
+            <div class="timer" id="timer">30</div>
+            <div class="score">Score: <span id="scoreDisplay">0</span></div>
+          </div>
+          <div id="questionCard" class="question-card">
+            <p id="questionText" class="question-text"></p>
+            <div id="choices" class="choices"></div>
+          </div>
+          <button id="btnNext" class="btn-primary hidden">Suivant</button>
+        </div>
+
+        <div id="quizResult" class="quiz-result hidden">
+          <h2>Quiz terminé !</h2>
+          <div class="result-card">
+            <p class="result-score">Votre score: <span id="finalScore">0</span>/<span id="finalTotal">0</span></p>
+            <p class="result-percent" id="resultPercent">0%</p>
+          </div>
+          <div id="nameForm" class="name-form">
+            <label for="playerNameInput">Entrez votre nom pour le classement :</label>
+            <div class="name-form-row">
+              <input type="text" id="playerNameInput" placeholder="Votre nom" maxlength="30">
+              <button id="btnSaveScore" class="btn-primary">Enregistrer</button>
+            </div>
+          </div>
+          <button id="btnRestart" class="btn-primary">Rejouer</button>
+        </div>
+      </section>
+
+      <section id="viewLeaderboard" class="view hidden">
+        <h2>Classement</h2>
+        <div id="leaderboardList" class="leaderboard-list">
+          <p class="empty-state">Aucun score enregistré.</p>
+        </div>
+        <button id="btnClearScores" class="btn-danger">Effacer le classement</button>
+      </section>
+
+      <section id="viewCreator" class="view hidden">
+        <h2>Créer votre Quiz</h2>
+        <p class="creator-info">Téléchargez un fichier JSON ou saisissez les questions manuellement.</p>
+        <div class="creator-upload">
+          <label class="upload-label">
+            <input type="file" id="jsonUpload" accept=".json">
+            Charger un fichier JSON
+          </label>
+        </div>
+        <div class="creator-editor">
+          <textarea id="creatorTextarea" rows="15" placeholder='[
+  {
+    "question": "Quelle est la capitale de la France ?",
+    "choices": ["Paris", "Lyon", "Marseille", "Nice"],
+    "correct": 0
+  }
+]'></textarea>
+        </div>
+        <button id="btnStartCustom" class="btn-primary">Démarrer le quiz personnalisé</button>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js?v=2"></script>
+</body>
+</html>
