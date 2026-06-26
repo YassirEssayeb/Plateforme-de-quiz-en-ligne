@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz en Ligne</title>
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
   <div class="container">
@@ -28,7 +28,10 @@
         <div id="quizActive" class="quiz-active hidden">
           <div class="quiz-header">
             <div class="progress">Question <span id="currentQ">1</span>/<span id="totalQ">0</span></div>
-            <div class="timer" id="timer">30</div>
+            <div class="timer-wrap">
+              <div class="timer-bar" id="timerBar"></div>
+              <span class="timer-text" id="timerText">30</span>
+            </div>
             <div class="score">Score: <span id="scoreDisplay">0</span></div>
           </div>
           <div id="questionCard" class="question-card">

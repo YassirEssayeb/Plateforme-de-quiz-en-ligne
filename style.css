@@ -89,6 +89,12 @@ nav {
   background: var(--primary);
 }
 
+.nav-btn.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .view { display: none; }
 .view.active { display: block; }
 
@@ -181,27 +187,44 @@ nav {
   flex-shrink: 0;
 }
 
-.timer {
-  background: var(--primary);
-  color: var(--text);
-  width: clamp(40px, 10vw, 50px);
-  height: clamp(40px, 10vw, 50px);
-  border-radius: 50%;
+.timer-wrap {
+  position: relative;
+  width: clamp(64px, 16vw, 100px);
+  height: 28px;
+  background: var(--surface);
+  border-radius: 16px;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(1rem, 3vw, 1.3rem);
-  font-weight: 800;
-  transition: background 0.3s;
   flex-shrink: 0;
+  border: 1px solid var(--border);
 }
 
-.timer.warning { background: #f39c12; }
-.timer.danger { background: var(--danger); animation: pulse 0.5s infinite; }
+.timer-bar {
+  position: absolute;
+  inset: 0;
+  background: var(--primary);
+  border-radius: 16px;
+  transition: width 0.4s linear, background 0.3s;
+  width: 100%;
+}
+
+.timer-bar.warning { background: #f39c12; }
+.timer-bar.danger { background: var(--danger); animation: pulse 0.5s infinite; }
+
+.timer-text {
+  position: relative;
+  z-index: 1;
+  color: var(--text);
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  font-weight: 800;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(1.05); }
 }
 
 .score {
@@ -506,12 +529,40 @@ nav {
 /* Small phones (320px - 400px) */
 @media (max-width: 400px) {
   body {
-    padding: 0.5rem 0.4rem;
+    padding: 0.1rem 0.4rem;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+  }
+
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #viewQuiz.view.active {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  header {
+    margin-bottom: 0;
+  }
+
+  header h1 {
+    margin-bottom: 0.15rem;
   }
 
   nav {
     gap: 0.3rem;
     padding: 0.4rem;
+    margin-top: 0.5rem;
   }
 
   .nav-btn {
@@ -528,7 +579,7 @@ nav {
   }
 
   .progress { text-align: left; }
-  .timer { justify-self: center; }
+  .timer-wrap { justify-self: center; }
   .score { text-align: right; }
 
   .leaderboard-item {
@@ -558,7 +609,38 @@ nav {
 /* Medium phones (400px - 480px) */
 @media (min-width: 401px) and (max-width: 480px) {
   body {
-    padding: 0.75rem 0.5rem;
+    padding: 0.1rem 0.5rem;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+  }
+
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #viewQuiz.view.active {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  header {
+    margin-bottom: 0;
+  }
+
+  header h1 {
+    margin-bottom: 0.2rem;
+  }
+
+  nav {
+    margin-top: 0.5rem;
   }
 
   .quiz-header {
@@ -569,7 +651,7 @@ nav {
   }
 
   .progress { text-align: left; }
-  .timer { justify-self: center; }
+  .timer-wrap { justify-self: center; }
   .score { text-align: right; }
 
   .leaderboard-item {
@@ -583,6 +665,41 @@ nav {
 
 /* Large phones / small tablets (481px - 600px) */
 @media (min-width: 481px) and (max-width: 600px) {
+  body {
+    padding: 0.2rem 0.75rem;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+  }
+
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #viewQuiz.view.active {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  header {
+    margin-bottom: 0.2rem;
+  }
+
+  header h1 {
+    margin-bottom: 0.3rem;
+  }
+
+  nav {
+    margin-top: 0.5rem;
+  }
+
   .quiz-header {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
@@ -590,7 +707,7 @@ nav {
   }
 
   .progress { text-align: left; }
-  .timer { justify-self: center; }
+  .timer-wrap { justify-self: center; }
   .score { text-align: right; }
 }
 

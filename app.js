@@ -73,6 +73,7 @@ const state = {
   timerId: null,
   isAnswering: false,
   isCustom: false,
+  quizInProgress: false,
 };
 
 const $ = (sel) => document.querySelector(sel);
@@ -86,7 +87,8 @@ const choicesEl = $('#choices');
 const currentQ = $('#currentQ');
 const totalQ = $('#totalQ');
 const scoreDisplay = $('#scoreDisplay');
-const timerEl = $('#timer');
+const timerEl = $('#timerText');
+const timerBar = $('#timerBar');
 const btnStart = $('#btnStart');
 const btnNext = $('#btnNext');
 const btnRestart = $('#btnRestart');
@@ -112,6 +114,7 @@ const navBtns = $$('.nav-btn');
 
 navBtns.forEach(btn => {
   btn.addEventListener('click', () => {
+    if (state.quizInProgress && btn.dataset.view !== 'quiz') return;
     const view = btn.dataset.view;
     showView(view);
   });
@@ -167,6 +170,15 @@ btnStartCustom.addEventListener('click', () => {
   }
 });
 
+function setNavDisabled(disabled) {
+  navBtns.forEach(btn => {
+    if (btn.dataset.view !== 'quiz') {
+      btn.disabled = disabled;
+      btn.classList.toggle('disabled', disabled);
+    }
+  });
+}
+
 function resetQuiz() {
   clearInterval(state.timerId);
   state.currentIndex = 0;
@@ -175,6 +187,8 @@ function resetQuiz() {
   state.isAnswering = false;
   state.questions = [];
   state.isCustom = false;
+  state.quizInProgress = false;
+  setNavDisabled(false);
   quizStart.classList.remove('hidden');
   quizActive.classList.add('hidden');
   quizResult.classList.add('hidden');
@@ -204,6 +218,8 @@ async function startQuiz(customQuestions) {
 
   state.currentIndex = 0;
   state.score = 0;
+  state.quizInProgress = true;
+  setNavDisabled(true);
   quizStart.classList.add('hidden');
   quizActive.classList.remove('hidden');
   quizResult.classList.add('hidden');
@@ -217,7 +233,8 @@ function showQuestion() {
   state.isAnswering = true;
   state.timer = TIMER_DURATION;
   timerEl.textContent = state.timer;
-  timerEl.className = 'timer';
+  timerBar.style.width = '100%';
+  timerBar.className = 'timer-bar';
   currentQ.textContent = state.currentIndex + 1;
   totalQ.textContent = state.questions.length;
   scoreDisplay.textContent = state.score;
@@ -270,6 +287,8 @@ function nextQuestion() {
 
 function endQuiz() {
   clearInterval(state.timerId);
+  state.quizInProgress = false;
+  setNavDisabled(false);
   quizActive.classList.add('hidden');
   quizResult.classList.remove('hidden');
   nameForm.classList.remove('hidden');
@@ -286,8 +305,10 @@ function startTimer() {
   state.timerId = setInterval(() => {
     state.timer--;
     timerEl.textContent = state.timer;
-    if (state.timer <= 5) timerEl.className = 'timer danger';
-    else if (state.timer <= 10) timerEl.className = 'timer warning';
+    timerBar.style.width = `${(state.timer / TIMER_DURATION) * 100}%`;
+    if (state.timer <= 5) timerBar.className = 'timer-bar danger';
+    else if (state.timer <= 10) timerBar.className = 'timer-bar warning';
+    else timerBar.className = 'timer-bar';
 
     if (state.timer <= 0) {
       clearInterval(state.timerId);
